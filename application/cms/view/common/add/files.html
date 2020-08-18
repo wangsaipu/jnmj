@@ -1,0 +1,40 @@
+									{foreach $files_upload_index as $k=>$v}
+									<div class="control-group" id='column_{$k}'>
+										<label class="control-label">{$v}<span class="required">*</span></label>
+										<div class="controls">
+											<div class="row-fluid fileupload-buttonbar">
+												<div class="span7">
+													<span class="btn green fileinput-button">
+													<i class="icon-plus icon-white"></i>
+													<span>添加图片</span>
+													<input type="file" name="{$k}[]" multiple>
+													</span>
+													<button type="submit" class="btn blue start">
+													<i class="icon-upload icon-white"></i>
+													<span>开始上传</span>
+													</button>
+													<button type="reset" class="btn yellow cancel">
+													<i class="icon-ban-circle icon-white"></i>
+													<span>取消上传</span>
+													</button>
+													<button type="button" class="btn red delete">
+													<i class="icon-trash icon-white"></i>
+													<span>删除图片</span>
+													</button>
+													<input type="checkbox" class="toggle fileupload-toggle-checkbox">
+												</div>
+												<div class="span5 fileupload-progress fade">
+													<div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+														<div class="bar" style="width:0%;"></div>
+													</div>
+													<div class="progress-extended">&nbsp;</div>
+												</div>
+											</div>
+											<div class="fileupload-loading"></div>
+											<br>
+											<table role="presentation" class="table table-striped">
+												<tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+											</table>
+										</div>
+									</div>
+									{/foreach}

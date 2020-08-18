@@ -1,0 +1,90 @@
+		    FormValidation.init(rules,messages);
+
+
+		    {if !empty($file_upload_index)}
+				{include file='common/public_js/file'}
+		    {/if}
+		    {if !empty($file_index_file)}
+				{include file='common/public_js/file'}
+		    {/if}
+			{if !empty($files_upload_index)}
+		   		FormFileUpload.init();
+			{/if}
+			// 富文本框初始化
+			{if !empty($editor)}
+				{foreach $editor as $v}
+	            	initKindEditor('#{$v}');
+		            function initKindEditor(field) {
+			            KindEditor.ready(function(K) {
+			                editor.push(K.create(field, {
+			                    resizeType : 1,
+			                    allowFileManager : true,
+			                    allowPreviewEmoticons : false,
+			                    allowImageUpload : true,
+			                    uploadJson : '{:url("upload/kindEditorUpload")}?file_dir={$file_dir|default=''}_text',
+			                    height:500,
+			                    width:'100%',
+			                    filterMode: false,
+			                    items : ["source", 
+		                    		"|", 
+		                    		"undo", "redo", 
+		                    		"|", 
+		                    		"preview", "print", "template", "code", "cut", "copy", "paste", "plainpaste", "wordpaste",
+									"|", 
+									"justifyleft", "justifycenter", "justifyright", "justifyfull", "insertorderedlist", "insertunorderedlist", "indent", "outdent", "subscript", "superscript", "clearhtml", "quickformat", "selectall", 
+									"|", 
+									"fullscreen", "/", "formatblock", "fontname", "fontsize", 
+									"|", 
+									"forecolor", "hilitecolor", "bold", "italic", "underline", "strikethrough", "lineheight", "removeformat", 
+									"|", 
+									"image",  "table", "hr", "emoticons", "baidumap", "pagebreak", "anchor", "link", "unlink", 
+									],
+			                    afterBlur : function(){
+				                	//编辑器失去焦点时直接同步，可以取到值
+				                    this.sync();
+				                }
+			                })
+			                )
+			            });
+			        }
+				{/foreach}
+			{else/}
+            	initKindEditor('.content');            
+            	function initKindEditor(field) {
+		            KindEditor.ready(function(K) {
+		                editor = K.create(field, {
+		                    resizeType : 1,
+		                    allowFileManager : true,
+		                    allowPreviewEmoticons : false,
+		                    allowImageUpload : true,
+		                    uploadJson : '{:url("upload/kindEditorUpload")}?file_dir={$file_dir|default=''}_text',
+		                    height:500,
+		                    width:'100%',
+		                    filterMode: false,
+		                    items : ["source", 
+		                    		"|", 
+		                    		"undo", "redo", 
+		                    		"|", 
+		                    		"preview", "print", "template", "code", "cut", "copy", "paste", "plainpaste", "wordpaste",
+									"|", 
+									"justifyleft", "justifycenter", "justifyright", "justifyfull", "insertorderedlist", "insertunorderedlist", "indent", "outdent", "subscript", "superscript", "clearhtml", "quickformat", "selectall", 
+									"|", 
+									"fullscreen", "/", "formatblock", "fontname", "fontsize", 
+									"|", 
+									"forecolor", "hilitecolor", "bold", "italic", "underline", "strikethrough", "lineheight", "removeformat", 
+									"|", 
+									"image",  "table", "hr", "emoticons", "baidumap", "pagebreak", "anchor", "link", "unlink", 
+									],
+		                    afterBlur : function(){
+			                	//编辑器失去焦点时直接同步，可以取到值
+			                    this.sync();
+			                }
+		                });
+		            });
+		        }
+            {/if}
+
+
+
+
+

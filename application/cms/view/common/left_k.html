@@ -1,0 +1,42 @@
+<div class="page-sidebar nav-collapse collapse">
+			<ul class="page-sidebar-menu" id='nav_start'>
+				<li>
+					<div class="sidebar-toggler hidden-phone"></div>
+				</li>
+				<li class="Index__index">
+					<a href="{:url('index/index')}">
+					<i class="icon-home"></i>
+					<span class="title">首页</span>
+					<span class="selected"></span>
+					</a>
+				</li>
+			{:new_getfkarr('id,menuname,icon','cms_role_name',$getfkarr,['pid'=>0])}
+<li class="">
+                    <a href="javascript:;">
+                        <i class="icon-phone-sign"></i>
+                        <span class="title">电销客服</span>
+                        <span class="selected"></span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                    		                        <li class="Kefuphone__index">
+	                            <a href="/public/admin.php/kefumember/index.html">整合数据</a>
+	                        </li>
+	                        	                        <li class="Kefuconsumer__index">
+	                            <a href="/public/admin.php/kefuconsumer/index.html">客户数据</a>
+	                        </li>
+	                                            </ul>
+                </li>
+			</ul>
+</div>
+<script>
+	if($('li').hasClass('{$controller__action}')){
+		$('.{$controller__action}').addClass('active').parents("li").addClass('active').each(function(){
+			$(this).find('a').find('.arrow').first().addClass('open');
+		});
+	}else{
+		$('.{$controller__index}').addClass('active').parents("li").addClass('active').each(function(){
+			$(this).find('a').find('.arrow').first().addClass('open');
+		});
+	}
+</script>

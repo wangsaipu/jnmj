@@ -1,0 +1,186 @@
+{include file='common/header'}
+
+<body class="page-header-fixed page-footer-fixed">
+<!--顶部导航 状态-->
+{include file='common/top'}
+<!--顶部导航 状态-->
+<div class="page-container row-fluid">
+    <!-- 导航栏 start-->
+    {include file='common/left'}
+    <!-- 导航栏 end-->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- {include file='common/nav'} -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3 class="page-title">添加数据
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home"></i>
+                            <a href="{:url('index/index')}">首页</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>
+
+                            <a href="{:url('swt/index')}">客户数据</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+
+                        <li>
+                            <div href="javascript:;" style='font-size:14px;'>
+                                添加数据
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption"><i class="icon-reorder"></i>新增</div>
+                            <div class="tools">
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <form action="{:url('add')}" method='post' id="form_sample_2" class="form-horizontal">
+                                <input type="hidden" name='backurl' value="{$backurl|default=''}">
+                                <div class="alert alert-error hide">  <!-- 后跳的位置 -->
+                                    <button class="close" data-dismiss="alert"></button>
+                                    你有一些形式的错误。请检查下面。
+                                </div>
+                                <div class="alert alert-success hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    您的表单验证成功！
+                                </div>
+
+
+
+                                <div class="control-group">
+                                    <label class="control-label">联系人<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="contacts" data-required="1" class="span6 m-wrap" placeholder="请输入联系人名字">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">联系方式<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="tellphone" data-required="1" class="span6 m-wrap" placeholder="请输入联系方式">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">客户名称<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="cname" data-required="1" class="span6 m-wrap" placeholder="请输入客户名称">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">商机来源<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="source" data-required="1" class="span6 m-wrap" placeholder="请输入商机来源">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">添加标签<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="diy_tags" data-required="1" class="span6 m-wrap" placeholder="添加标签">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">推荐方案<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="case" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">需求概述<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="b_description" data-required="1" class="span6 m-wrap" placeholder="请描述商机需求">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">推荐产品<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="" data-required="1" class="span6 m-wrap" placeholder="推荐产品">
+                                    </div>
+                                </div>
+
+                                <!--<div class="control-group">
+                                    <label class="control-label">数据状态<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <select  class="m-wrap" data-with-diselect="1" name="state" data-placeholder="数据状态" tabindex="1">
+                                            <option value=""></option>
+                                            {:new_getfkarr('state','data_state',$arr,[])}
+                                            {foreach $arr as $k=>$fk}
+                                            {if isset($state)}
+                                            <option value="{$fk['state']}" {if $state==$fk['id'] } selected {/if}>{$fk['state']}</option>
+                                            {else/}
+                                            <option value="{$fk['state']}">{$fk['state']}</option>
+                                            {/if}
+                                            {/foreach}
+                                        </select>
+                                    </div>
+                                </div>-->
+
+
+                                <div class="form-actions">
+
+                                    <button type="submit" class="btn green">保存</button>
+
+                                    <button type="reset" class="btn">取消</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{include file='common/footer'}
+
+<script>
+    var editor;
+    jQuery(document).ready(function() {
+        App.init();
+        rules = {
+            contacts: {
+                required: true,
+            },
+            cname: {
+                required: true,
+            },
+            tellphone: {
+                required: true,
+            },
+            source: {
+                required: true,
+            },
+            state: {
+                required: true,
+            },
+        };
+        messages = { // custom messages for radio buttons and checkboxes
+            contacts: {
+                required: '不能为空',
+            },
+            cname: {
+                required: '不能为空',
+            },
+            tellphone: {
+                required: '不能为空',
+            },
+            source: {
+                required: '不能为空',
+            },
+            state: {
+                required: '不能为空',
+            },
+
+        };//需要修改的部分
+        {include file='common/add/footer_js'}
+    })
+</script>

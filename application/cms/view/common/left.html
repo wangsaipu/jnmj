@@ -1,0 +1,49 @@
+<div class="page-sidebar nav-collapse collapse">
+			<ul class="page-sidebar-menu" id='nav_start'>
+				<li>
+					<div class="sidebar-toggler hidden-phone"></div>
+				</li>
+				<li class="Index__index">
+					<a href="{:url('index/index')}">
+					<i class="icon-home"></i>
+					<span class="title">首页</span>
+					<span class="selected"></span>
+						
+					</a>
+				</li>
+			{:new_getfkarr('id,menuname,icon','cms_role_name',$getfkarr,['pid'=>0])}
+			{foreach $getfkarr as $k=>$fk}
+                {if in_array($fk['id'],$b_role) || $Think.session.cmsuser['is_super'] == 1}
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="{$fk.icon}"></i>
+                        <span class="title">{$fk.menuname}</span>
+                        <span class="selected"></span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                    	{:new_getfkarr('id,menuname,modelname','cms_role_name',$getfkarr2,['pid'=>$fk['id']])}
+                    	{foreach $getfkarr2 as $k2=>$fk2}
+                    		{if in_array($fk2['id'],$b_role) || $Think.session.cmsuser['is_super'] == 1}
+	                        <li class="{$fk2['modelname']}__index">
+	                            <a href="{:url($fk2['modelname'].'/index')}">{$fk2.menuname}</a>
+	                        </li>
+	                        {/if}
+                        {/foreach}
+                    </ul>
+                </li>
+                {/if}
+            {/foreach}
+			</ul>
+</div>
+<script>
+	if($('li').hasClass('{$controller__action}')){
+		$('.{$controller__action}').addClass('active').parents("li").addClass('active').each(function(){
+			$(this).find('a').find('.arrow').first().addClass('open');
+		});
+	}else{
+		$('.{$controller__index}').addClass('active').parents("li").addClass('active').each(function(){
+			$(this).find('a').find('.arrow').first().addClass('open');
+		});
+	}
+</script>

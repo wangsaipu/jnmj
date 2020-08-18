@@ -1,0 +1,135 @@
+	<script>
+
+		jQuery(document).ready(function() {       
+			var initTable1 = function() {
+			    function fnFormatDetails ( oTable, nTr )
+			    {
+			        var aData = oTable.fnGetData( nTr );
+			        var sOut = '<table>';
+			        {foreach $my_rule.showlist as $k=>$v}                   //***************************************************************)
+
+			        sOut += '<tr><td style="width:120px">{$v}：</td><td>'+aData[{$k+$init_index}].replace(/<(\/)*nobr>/ig,"")+'</td></tr>';
+			        {/foreach}
+			        {if !isset($no_edit)}
+			        sOut += '<tr><td style="width:120px">操作：</td><td>'+aData[{$edit_index}]+'&nbsp;<a href="javascript:;" class="btn mini black shouqi"><i class="icon-upload-alt"></i> 收起</a></td></tr>';
+			        {/if}
+			        sOut += '</table>';
+			         
+			        return sOut;
+			    }
+			    var nCloneTh = document.createElement( 'th' );
+			    var nCloneTd = document.createElement( 'td' );
+			    nCloneTh.innerHTML = '<nobr>查看详情</nobr>';
+			    nCloneTd.innerHTML = '<span class="row-details row-details-close"></span>';
+			     
+			    $('#sample_1 thead tr').each( function () {
+			        this.insertBefore( nCloneTh, this.childNodes[0] );
+			        $(this).children().first().css({'width':'40px'});
+			    } );
+			     
+			    $('#sample_1 tbody tr').each( function () {
+			        this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
+			    } );
+			     
+
+			    var oTable = $('#sample_1').dataTable( {
+			        "aoColumnDefs": [   //是否进行排序
+			            {"bSortable": false, "aTargets": [ 0,-1] }
+			        ],
+			        // "aaSorting": [[1, 'asc']], //默认排序方式
+			    //      "aLengthMenu": [         //分页下拉选择项
+			    //         [5,10, 15, 20, -1],
+			    //         [5,10, 15, 20, "All"] 
+			    //     ],
+			         "iDisplayLength": 50,       //默认分页数
+			    });
+
+			    // jQuery('#sample_1_wrapper .dataTables_filter input').addClass("m-wrap small"); // 查询的大小
+			    jQuery('#sample_1_wrapper .row-fluid').remove(); // 查询的大小
+
+			    // jQuery('#sample_1_wrapper .dataTables_length select').addClass("m-wrap small"); // 变小
+			    jQuery('#sample_1_wrapper .dataTables_length').remove();  //删除分页
+			    // jQuery('#sample_1_wrapper .dataTables_length select').select2(); // 默认选择哪个
+
+			    jQuery('#sample_1_wrapper .row-fluid').last().remove();  //删除底部导航
+			     
+
+			    $('#sample_1').on('click', ' tbody td .row-details', function () {
+			        var nTr = $(this).parents('tr')[0];
+			        if ( oTable.fnIsOpen(nTr) )
+			        {
+			            /* This row is already open - close it */
+			            $(this).addClass("row-details-close").removeClass("row-details-open");
+			            oTable.fnClose( nTr );
+			        }
+			        else
+			        {
+			            /* Open this row */                
+			            $(this).addClass("row-details-open").removeClass("row-details-close");
+			            oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
+
+            			$('.shouqi').click(function(){
+							return $(this).parents('tr').last().prev().first('td').find('span').first().click()
+						})
+						
+			        }
+			    });
+
+		        $('#sample_1_column_toggler input[type="checkbox"]').change(function(){
+		            /* Get the DataTables object again - this is not a recreation, just a get of the object */
+
+		            var iCol = parseInt($(this).attr("data-column"));
+
+		            var bVis = oTable.fnSettings().aoColumns[iCol].bVisible;
+		            oTable.fnSetColumnVis(iCol, (bVis ? false : true));
+	
+
+		        });	
+
+				function DIY_init_table(index){ // 自定义初始显示字段
+		            $('#sample_1 .numeric').each(function(){
+		            	if($(this).data('column')==index){
+		            		$(this).removeClass('inithidden')
+		            	}
+		            });
+		            var bVis = oTable.fnSettings().aoColumns[index].bVisible;
+		            oTable.fnSetColumnVis(index, (bVis ? false : true));
+
+				}
+				{if isset($hidden_index)}
+					{foreach($hidden_index as $v)}
+						DIY_init_table({$v+$init_index});
+					{/foreach}
+				{/if}		//默认隐藏字段索引值                          ***************************************************
+			}
+		    App.init();
+		    // TableAdvanced.init(); //表单样式
+        	if (jQuery().dataTable) {
+            	initTable1();
+            }
+		    // TableManaged.init(); //表格样式
+           jQuery('.group-checkable').change(function () {  //全选效果
+                var set = jQuery(this).attr("data-set");
+                var checked = jQuery(this).is(":checked");
+                jQuery(set).each(function () {
+                    if (checked) {
+                        $(this).attr("checked", true);
+                    } else {
+                        $(this).attr("checked", false);
+                    }
+                });
+                jQuery.uniform.update(set);
+            });
+
+			$('.submit').click(function(){                                         //***************************************************************)
+				searchSize = $('.searchSize').val();
+				$('#searchSize').val(searchSize);
+				return $('#searchForm').submit();
+			})
+			$('.searchSize').change(function(){                                   //***************************************************************)
+				searchSize = $('.searchSize').val();
+				$('#searchSize').val(searchSize);
+				return $('#searchForm').submit();
+			})
+		});
+	</script>

@@ -1,0 +1,48 @@
+<script>
+/*
+    执行对象    #column_{ $k}    
+    服务器存储文件夹    $ file_dir
+*/ 
+var FormFileUpload = function () {
+
+
+    return {
+        init: function () {
+            {foreach $files_upload_index as $k=>$v}
+            $('#column_{$k}').fileupload({
+                // autoUpload:true,
+                url: '{:url("upload/fileupload",array("file_dir"=>$file_dir))}',
+                dataType: 'json',
+                autoUpload: false,
+                acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+                maxFileSize: 999000,
+                disableImageResize: /Android(?!.*Chrome)|Opera/
+                    .test(window.navigator.userAgent),
+                previewMaxWidth: 100,
+                previewMaxHeight: 100,
+                previewCrop: true
+            })
+            {/foreach}
+
+            if ($.support.cors) {
+                $.ajax({
+                    url: '{:url("upload/fileupload",array("file_dir"=>$file_dir))}',
+                    type: 'HEAD'
+                }).fail(function () {
+                    $('<span class="alert alert-error"/>')
+                        .text('上载服务器当前不可用！！！')
+                        .appendTo('#fileupload');
+                });
+            }
+
+            // initialize uniform checkboxes  
+            App.initUniform('.fileupload-toggle-checkbox');
+        }
+
+    };
+}(); 
+
+
+
+</script>
+

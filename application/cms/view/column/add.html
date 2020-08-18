@@ -1,0 +1,166 @@
+{include file='common/header'}
+
+<body class="page-header-fixed page-footer-fixed">
+	<!--顶部导航 状态-->
+		{include file='common/top'}
+	<!--顶部导航 状态-->
+	<div class="page-container row-fluid">
+		<!-- 导航栏 start-->
+		{include file='common/left'}
+		<!-- 导航栏 end-->
+		<div class="page-content">
+			<div class="container-fluid">
+				<!-- {include file='common/nav'} -->
+				<div class="row-fluid">
+					<div class="span12">
+						<h3 class="page-title">添加栏目信息
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="{:url('index/index')}">首页</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								
+								<a href="{:url('column/index')}">栏目信息</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							
+							<li> 
+								<div href="javascript:;" style='font-size:14px;'>
+									添加栏目信息
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>新增</div>
+								<div class="tools">
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<form action="{:url('add')}" method='post' id="form_sample_2" class="form-horizontal">
+									<input type="hidden" name='backurl' value='{$backurl|default=''}'>
+									<div class="alert alert-error hide">  <!-- 后跳的位置 -->
+										<button class="close" data-dismiss="alert"></button>
+										你有一些形式的错误。请检查下面。
+									</div> 
+									<div class="alert alert-success hide">
+										<button class="close" data-dismiss="alert"></button>
+										您的表单验证成功！
+									</div>
+
+									<div class="control-group">
+										<label class="control-label">栏目名<span class="required">*</span></label>
+										<div class="controls">
+											<select class="span6 m-wrap" name="classify_id">
+												<option value=""></option>
+												{$str}
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">栏目别名<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="lm_bname" data-required="1" class="span6 m-wrap" placeholder="请输入栏目别名">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">栏目目录<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="lm_catalog" data-required="1" class="span6 m-wrap" placeholder="请输入栏目目录">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">栏目关键词<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="lm_keyword" data-required="1" class="span6 m-wrap" placeholder="请输入栏目关键词">
+										</div>
+									</div>
+
+									<div class="control-group">
+										<label class="control-label">栏目描述<span class="required">*</span></label>
+										<div class="controls">
+											<textarea class="span6 m-wrap" name="lm_description"></textarea>
+										</div>
+									</div>
+									
+									
+									<div class="form-actions">
+
+										<button type="submit" class="btn green">保存</button>
+
+										<button type="reset" class="btn">取消</button>
+
+									</div>
+									
+								</form>
+
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{include file='common/footer'}
+
+<script>
+	var editor;
+	jQuery(document).ready(function() {       
+	   App.init();
+	   var my_html = $('.add_html').html();
+	   $('.add_class').click(function(){
+            $('.add_html').find('.remove_class').click(function(){
+				$(this).parent().remove();
+			});	
+			$('.add_html').append(my_html);
+		});
+//需要修改的部分 
+		rules = {
+                classify_id: {
+                    required: true,
+                },
+                lm_bname: {
+                    required: true,
+                },
+                lm_catalog: {
+                    required: true,
+                },
+                lm_keyword: {
+                    required: true,
+                },
+                lm_description: {
+                    required: true,
+                },
+            };
+        messages = { // custom messages for radio buttons and checkboxes
+                classify_id: {
+                    required: '不能为空',
+                },
+                lm_bname: {
+                    required: '不能为空',
+                },
+                lm_catalog: {
+                    required: '不能为空',
+                },
+                lm_keyword: {
+                    required: '不能为空',
+                },
+                lm_description: {
+                    required: '不能为空',
+                },
+            };//需要修改的部分 
+		{include file='common/add/footer_js'} 
+	})
+</script>

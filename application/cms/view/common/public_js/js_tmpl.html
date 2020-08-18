@@ -1,0 +1,139 @@
+<!-- 
+	jquery上传插件的效果模板  既然post提交数据库
+	file.name             文件名字
+	file.size             文件大小
+	file.thumbnail_url    数据库存储的值
+	file.column           数据库字段名
+ -->
+<div class="row-fluid" >
+
+					<div class="span12">
+
+						<script id="template-upload" type="text/x-tmpl">
+
+							{% for (var i=0, file; file=o.files[i]; i++) { %}
+
+							    <tr class="template-upload fade">
+
+							        <td class="preview"><span class="fade"></span></td>
+
+							        <td class="name"><span>{%=file.name%}</span></td>
+
+							        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+
+							        {% if (file.error) { %}
+
+							            <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
+
+							        {% } else if (o.files.valid && !i) { %}
+
+							            <td>
+
+							                <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
+
+							            </td>
+
+							            <td class="start">{% if (!o.options.autoUpload) { %}
+
+							                <button class="btn">
+
+							                    <i class="icon-upload icon-white"></i>
+
+							                    <span>上传</span>
+
+							                </button>
+
+							            {% } %}</td>
+
+							        {% } else { %}
+
+							            <td colspan="2"></td>
+
+							        {% } %}
+
+							        <td class="cancel">{% if (!i) { %}
+
+							            <button class="btn red">
+
+							                <i class="icon-ban-circle icon-white"></i>
+
+							                <span>取消</span>
+
+							            </button>
+
+							        {% } %}</td>
+
+							    </tr>
+
+							{% } %}
+
+						</script>
+
+						<!-- The template to display files available for download -->
+
+						<script id="template-download" type="text/x-tmpl">
+
+							{% for (var i=0, file; file=o.files[i]; i++) { %}
+
+							    <tr class="template-download fade">
+
+							        {% if (file.error) { %}
+
+							            <td></td>
+
+							            <td class="name" ><span>{%=file.name%}</span></td>
+
+							            <td class="size" ><span>{%=o.formatFileSize(file.size)%}</span></td>
+
+							            <td class="error" colspan="2" style='line-height:36px'><span class="label label-important">Error</span> {%=file.error%}</td>
+
+							        {% } else { %}
+
+							            <td class="preview">
+
+							            {% if (file.thumbnail_url) { %}
+							            	<input type="hidden" name='{%=file.column%}[]' value="{%=file.thumbnail_url%}">
+
+							                <a class="fancybox-button" data-rel="fancybox-button" href="{$Think.config.cms_upload}/{%=file.thumbnail_url%}" title="{%=file.name%}">
+
+							                <img src="{$Think.config.cms_upload}/{%=file.thumbnail_url%}" width='100' >
+
+							                </a>
+
+							            {% } %}</td>
+
+							            <td class="name" >
+
+							                <a href="{$Think.config.cms_upload}/{%=file.thumbnail_url%}" title="{%=file.name%}" data-gallery="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+
+							            </td>
+
+							            <td class="size" ><span>{%=o.formatFileSize(file.size)%}</span></td>
+
+							            <td colspan="2"></td>
+
+							        {% } %}
+
+							        <td class="delete">
+
+							            <button class="btn red" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+
+							                <i class="icon-trash icon-white"></i>
+
+							                <span>删除</span>
+
+							            </button>
+
+							            <input type="checkbox" class="fileupload-checkbox hide" name="delete" value="1">
+
+							        </td>
+
+							    </tr>
+
+							{% } %}
+
+						</script>
+
+					</div>
+
+				</div>

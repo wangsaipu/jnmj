@@ -1,0 +1,15 @@
+										{foreach $file_upload_index as $column=>$name}
+										<div class="control-group">
+											<label class="control-label">{$name}</label>
+											<div class="controls">
+												<div class="fileupload fileupload-new" data-provides="fileupload">
+													<div class="fileupload-new thumbnail default_{$column}" style="width: 200px; height: 150px;">
+														<img {if(isset($info[$column])) }src='{$Think.config.cms_upload}/{$info[$column]|default=''}'{else/} src='{$Think.config.cms_resource}/image/zhanwu.jpg'{/if} alt="" />
+													</div>
+													<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;">
+													</div>
+													
+												</div>
+											</div>
+										</div>	
+										{/foreach}

@@ -1,0 +1,264 @@
+{include file='common/header'}
+
+<body class="page-header-fixed page-footer-fixed">
+<!--顶部导航 状态-->
+{include file='common/top'}
+<!--顶部导航 状态-->
+<div class="page-container row-fluid">
+    <!-- 导航栏 start-->
+    {include file='common/left'}
+    <!-- 导航栏 end-->
+    <div class="page-content">
+        <div class="container-fluid">
+            <!-- {include file='common/nav'} -->
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3 class="page-title">添加数据
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home"></i>
+                            <a href="{:url('index/index')}">首页</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li>
+
+                            <a href="{:url('contract/index')}">客户数据</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+
+                        <li>
+                            <div href="javascript:;" style='font-size:14px;'>
+                                新建合同
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption"><i class="icon-reorder"></i>新增</div>
+                            <div class="tools">
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <form action="{:url('add')}" method='post' id="form_sample_2" class="form-horizontal">
+                                <input type="hidden" name='backurl' value="{$backurl|default=''}">
+                                <div class="alert alert-error hide">  <!-- 后跳的位置 -->
+                                    <button class="close" data-dismiss="alert"></button>
+                                    你有一些形式的错误。请检查下面。
+                                </div>
+                                <div class="alert alert-success hide">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    您的表单验证成功！
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">客户名称<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="company" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">微信群<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="wg_state" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">联系人<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="contact" data-required="1" class="span6 m-wrap" placeholder="请选择">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">联系方式<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="contact_tell" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">客户负责人<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="c_person" data-required="1" class="span6 m-wrap" placeholder="请选择">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">负责人部门<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="res_dep" data-required="1" class="span6 m-wrap" placeholder="请选择">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">所有权人<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="owner" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">总合同额<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="contract_total" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">总代收<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="total_daishou" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">客户标签<span class="required">*</span></label>
+                                    <div class="controls">
+                                        <input type="text" name="c_tags" data-required="1" class="span6 m-wrap" placeholder="请输入">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">客户来源类型：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="c_source" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">主营行业：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="industry" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">创建人：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="create_p" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">创建部门：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="create_d" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">注册行政区域：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="area" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">注册园区：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="regist_part" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">社会信用代码：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="scc" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">法定代表人：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="legal_person" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">企业电话：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="tellphone" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">企业邮箱：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="email" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label">备注：<span class="required"></span></label>
+                                    <div class="controls">
+                                        <input type="text" name="mark" data-required="1" class="span6 m-wrap" placeholder="">
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+
+                                    <button type="submit" class="btn green">保存</button>
+
+                                    <button type="reset" class="btn">取消</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{include file='common/footer'}
+
+<script>
+    var editor;
+    jQuery(document).ready(function() {
+        App.init();
+        rules = {
+            contacts: {
+                required: true,
+            },
+            cname: {
+                required: true,
+            },
+            tellphone: {
+                required: true,
+            },
+            source: {
+                required: true,
+            },
+            state: {
+                required: true,
+            },
+        };
+        messages = { // custom messages for radio buttons and checkboxes
+            contacts: {
+                required: '不能为空',
+            },
+            cname: {
+                required: '不能为空',
+            },
+            tellphone: {
+                required: '不能为空',
+            },
+            source: {
+                required: '不能为空',
+            },
+            state: {
+                required: '不能为空',
+            },
+
+        };//需要修改的部分
+        {include file='common/add/footer_js'}
+    })
+</script>

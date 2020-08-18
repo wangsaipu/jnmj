@@ -1,0 +1,137 @@
+{include file='common/header'}
+
+
+<body class="page-header-fixed page-footer-fixed">
+	<!--顶部导航 状态-->
+		{include file='common/top'}
+	<!--顶部导航 状态-->
+	<div class="page-container row-fluid">
+		<!-- 导航栏 start-->
+		{include file='common/left'}
+		<!-- 导航栏 end-->
+		<div class="page-content">
+			<div class="container-fluid">
+				<!-- {include file='common/nav'} -->
+				<div class="row-fluid">
+					<div class="span12">
+						<h3 class="page-title">用户审核信息
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="{:url('index/index')}">首页</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								
+								<a href="{:url('user_examine/index')}">用户审核管理</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							
+							<li> 
+								<div href="javascript:;" style='font-size:14px;'>
+									用户审核信息
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>用户审核信息</div>
+								<div class="tools">
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<form action="{:url('update')}" method='post' id="form_sample_2" class="form-horizontal">
+									<input type="hidden" name='backurl' value='{$backurl|default=''}'>
+									<input type="hidden" name='id' value='{$info.id|default=''}'>
+									<input type="hidden" name='user_examine_status'>
+									<div class="alert alert-error hide">  <!-- 后跳的位置 -->
+										<button class="close" data-dismiss="alert"></button>
+										你有一些形式的错误。请检查下面。
+									</div> 
+									<div class="alert alert-success hide">
+										<button class="close" data-dismiss="alert"></button>
+										您的表单验证成功！
+									</div>
+
+									<div class="control-group">
+										<label class="control-label">用户真实姓名<span class="required">*</span></label>
+										<div class="controls">
+										<span class='text'>{$info.user_examine_name|default=''}</span>	
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">身份证地区<span class="required">*</span></label>
+										<div class="controls">
+										<span class='text'>{$info.user_examine_area|showstatus=###,'大陆地区,港澳台地区:0,1'}</span>	
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">用户身份证号码<span class="required">*</span></label>
+										<div class="controls">
+										<span class='text'>{$info.user_examine_card_id|default=''}</span>	
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">用户身份证照片<span class="required">*</span></label>
+										<div class="controls">
+										<span class='text'><img src="{$info.user_examine_card_img|default=''}" style="width: 100%;height: 100%;"></span>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">联系方式<span class="required">*</span></label>
+										<div class="controls">
+										<span class='text'>{$info.user_examine_phone|default=''}</span>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">用户相关证书文件<span class="required">*</span></label>
+										<div class="controls">
+										<span class='text'>{$info.user_examine_file|default=''}</span>
+										</div>
+									</div>
+									
+									
+									<div class="form-actions">
+										{if $info.user_examine_status==0}
+										<span class="btn green" id="yes_li">通过审核</span>
+										<span class="btn red" id="no_li">不通过审核</span>
+										{elseif $info.user_examine_status==1}
+										<span class="btn green">审核通过</span>
+										{elseif $info.user_examine_status==2}
+										<span class="btn red">审核不通过</span>
+										{/if}
+									</div>
+									
+								</form>
+
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{include file='common/footer'}
+<script>
+	jQuery(document).ready(function() {       
+	   App.init();
+	   $('#yes_li').click(function(){
+	   		$('input[name="user_examine_status"]').val('1');
+	   		$('#form_sample_2').submit();
+	   });
+	   $('#no_li').click(function(){
+	   		$('input[name="user_examine_status"]').val('2');
+	   		$('#form_sample_2').submit();
+	   });
+	})
+</script>

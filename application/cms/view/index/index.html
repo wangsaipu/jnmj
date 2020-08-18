@@ -1,0 +1,70 @@
+{include file='common/header'}
+<title>后台管理系统</title>
+<!-- 备忘录的插件 -->
+
+<link rel="stylesheet" href="{$Think.config.cms_resource}/css/documentation.css?12" type="text/css" />
+<link rel="stylesheet" href="{$Think.config.cms_resource}/css/jalendar.css?121" type="text/css" />
+<!--  -->
+</head>
+<body class="page-header-fixed page-footer-fixed ">
+	{include file='common/top'}
+	<div class="page-container">
+		{include file='common/left'}
+		<div class="page-content">
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12">
+						<h3 class="page-title">
+							 首页信息展示
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="index.html">首页</a> 
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="dashboard">
+
+				</div>
+			</div>
+		</div>	
+	</div>
+
+
+	{include file='common/footer'}
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.js" type="text/javascript"></script>   
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.russia.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.world.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.europe.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.germany.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.usa.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.vmap.sampledata.js" type="text/javascript"></script>  
+	<script src="{$Think.config.cms_resource}/js/jquery.flot.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.flot.resize.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.pulsate.min.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/date.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/daterangepicker.js" type="text/javascript"></script>     
+	<script src="{$Think.config.cms_resource}/js/jquery.gritter.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/fullcalendar.min.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.easy-pie-chart.js" type="text/javascript"></script>
+	<script src="{$Think.config.cms_resource}/js/jquery.sparkline.min.js" type="text/javascript"></script>  
+	<!-- 备忘录的插件 -->
+	<script type="text/javascript" src="{$Think.config.cms_resource}/js/jalendar.js?1211111/"></script>     
+	<!-- 备忘录的插件 -->
+	<script src="{$Think.config.cms_resource}/js/index.js" type="text/javascript"></script>  
+	<script type="text/javascript">
+		jQuery(document).ready(function() {    
+		   App.init();
+		   Index.init();
+		   Index.initJQVMAP(); 
+		   Index.initCalendar(); 
+		   Index.initCharts(); 
+		   Index.initChat();
+		   Index.initMiniCharts();
+		   Index.initDashboardDaterange();
+		   Index.initIntro();
+    	   $('#myId31').jalendar();
+		});
+	</script>

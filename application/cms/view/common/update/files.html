@@ -1,0 +1,64 @@
+									{foreach $files_upload_index as $column=>$name}
+									<div class="control-group" id='column_{$column}'>
+										<label class="control-label">{$name}<span class="required">*</span></label>
+										<div class="controls">
+											<div class="row-fluid fileupload-buttonbar">
+												<div class="span7">
+													<span class="btn green fileinput-button">
+													<i class="icon-plus icon-white"></i>
+													<span>添加图片</span>
+													<input type="file" name="{$column}[]" multiple>
+													</span>
+													<button type="submit" class="btn blue start">
+													<i class="icon-upload icon-white"></i>
+													<span>开始上传</span>
+													</button>
+													<button type="reset" class="btn yellow cancel">
+													<i class="icon-ban-circle icon-white"></i>
+													<span>取消上传</span>
+													</button>
+													<button type="button" class="btn red delete">
+													<i class="icon-trash icon-white"></i>
+													<span>删除图片</span>
+													</button>
+													<input type="checkbox" class="toggle fileupload-toggle-checkbox">
+												</div>
+												<div class="span5 fileupload-progress fade">
+													<div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+														<div class="bar" style="width:0%;"></div>
+													</div>
+													<div class="progress-extended">&nbsp;</div>
+												</div>
+											</div>
+											<div class="fileupload-loading"></div>
+											<br>
+											<table role="presentation" class="table table-striped">
+												<tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery">
+												{if !empty($info[$column])}
+												{foreach :json_decode($info[$column]) as $k=>$v}
+												<tr class="template-download fade in">
+										            <td class="preview">
+										            	<input type="hidden" name='{$column}[]' value="{$v}">
+										                <a class="fancybox-button" data-rel="fancybox-button" href="{$Think.config.cms_upload}/{$v}" title="{$v}">
+										                <img src="{$Think.config.cms_upload}/{$v}" width='100' >
+										                </a>
+										            </td>
+										            <td class="name" >
+										                <a href="{$Think.config.cms_upload}/{$v}" title="{$v}" data-gallery="gallery" download="{$v}">{$v}</a>
+										            </td>
+										            <td colspan="3"></td>
+											        <td class="delete">
+											            <button class="btn red" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+											                <i class="icon-trash icon-white"></i>
+											                <span>删除</span>
+											            </button>
+											            <input type="checkbox" class="fileupload-checkbox hide" name="delete" value="1">
+											        </td>
+									        	</tr>
+												{/foreach}
+												{/if}
+												</tbody>
+											</table>
+										</div>
+									</div>
+									{/foreach}

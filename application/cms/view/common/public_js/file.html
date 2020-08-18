@@ -1,0 +1,27 @@
+			   $('.upload_img').click(function(){	
+			   
+			   	   var formData = new FormData($( "#form_sample_2" )[0]); 
+			   	   column = $(this).data('column');
+			   	   formData.append('column',column);
+			   	   formData.append('file_dir','{$file_dir}');
+				   $.ajax({  
+				          url: '{:url("upload/uploadImg")}' ,  
+				          type: 'post',  
+				          data: formData,  
+				          async: false,  
+				          cache: false,  
+				          contentType: false,  
+				          processData: false,  
+				          success: function (returndata) {  
+				          		if(returndata!=0){
+				          			$('#column_'+column).val(returndata);
+				          			$('.default_img').html('');
+				          			$('#click_'+column).html('已上传').removeClass('red').addClass('blue');
+				          		}else{
+				          			alert('未上传成功')
+				          		}
+				          },  
+				          error: function (returndata) {  
+				          }  
+				   }); 		   	
+			   })

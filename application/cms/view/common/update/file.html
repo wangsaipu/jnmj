@@ -1,0 +1,24 @@
+										{foreach $file_upload_index as $column=>$name}
+										<div class="control-group">
+											<label class="control-label">{$name}</label>
+											<div class="controls">
+												<div class="fileupload fileupload-new" data-provides="fileupload">
+													<div class="fileupload-new thumbnail default_{$column}" style="width: 200px; height: 150px;">
+														<img {if(isset($info[$column])) }src='{$info[$column]|default=''}'{else/} src='{$Think.config.cms_resource}/image/zhanwu.jpg'{/if} alt="" />
+													</div>
+													<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;">
+													</div>
+													<div>
+														<span class="btn btn-file">
+															<span class="fileupload-new">选择图片</span>
+															<span class="fileupload-exists">重选</span>
+															<input type="file" class="default" name='upload_{$column}'/><!-- 这个name是ajax文件上传时要用的  -->
+														</span>
+														<a href="javascript:;" class="btn fileupload-exists" data-dismiss="fileupload">取消</a>
+														<a href="javascript:;" class="btn red fileupload-exists upload_img" data-column='{$column}' id='click_{$column}'>上传</a>
+														<input type="hidden" class='save_input' name="{$column}" id="column_{$column}" value='{$info[$column]|default=''}'><!-- 这个是保存的时候用的 -->
+													</div>
+												</div>
+											</div>
+										</div>	
+										{/foreach}

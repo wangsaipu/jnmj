@@ -1,0 +1,27 @@
+		    FormValidation.init(rules,messages);
+
+			// 富文本框初始化
+            initKindEditor();
+            function initKindEditor() {
+	            KindEditor.ready(function(K) {
+	                editor = K.create('.content', {
+	                    resizeType : 1,
+	                    allowFileManager : true,
+	                    allowPreviewEmoticons : false,
+	                    allowImageUpload : true,
+	                    uploadJson : '{:url("upload/kindEditorUpload")}?file_dir={$file_dir|default=''}_text',
+	                    height:500,
+	                    width:'100%',
+	                    items : [
+	                        'source','undo','clearhtml','hr',
+	                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+	                        'insertunorderedlist', '|', 'emoticons', 'image','link', 'unlink','baidumap','lineheight','table','anchor','preview','print','template','code','cut'],
+	                    afterBlur : function(){
+		                	//编辑器失去焦点时直接同步，可以取到值
+		                    this.sync();
+		                }
+	                });
+					editor.readonly(true);
+	            });
+	        }
+

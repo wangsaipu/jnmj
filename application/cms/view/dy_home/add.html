@@ -1,0 +1,160 @@
+{include file='common/header'}
+
+<body class="page-header-fixed page-footer-fixed">
+	<!--顶部导航 状态-->
+		{include file='common/top'}
+	<!--顶部导航 状态-->
+	<div class="page-container row-fluid">
+		<!-- 导航栏 start-->
+		{include file='common/left'}
+		<!-- 导航栏 end-->
+		<div class="page-content">
+			<div class="container-fluid">
+				<!-- {include file='common/nav'} -->
+				<div class="row-fluid">
+					<div class="span12">
+						<h3 class="page-title">添加文章信息
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="{:url('index/index')}">首页</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								
+								<a href="{:url('dy_home/index')}">首页设置管理</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							
+							<li> 
+								<div href="javascript:;" style='font-size:14px;'>
+									添加首页设置信息
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<div class="portlet box green">
+							<div class="portlet-title">
+								<div class="caption"><i class="icon-reorder"></i>新增</div>
+								<div class="tools">
+								</div>
+							</div>
+							<div class="portlet-body form">
+								<form action="{:url('add')}" method='post' id="form_sample_2" class="form-horizontal">
+									<input type="hidden" name='backurl' value='{$backurl|default=''}'>
+									<div class="alert alert-error hide">  <!-- 后跳的位置 -->
+										<button class="close" data-dismiss="alert"></button>
+										你有一些形式的错误。请检查下面。
+									</div> 
+									<div class="alert alert-success hide">
+										<button class="close" data-dismiss="alert"></button>
+										您的表单验证成功！
+									</div>
+
+									<div class="control-group">
+										<label class="control-label">名称<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="dy_name" class="span6 m-wrap" placeholder="请输入名称" value="{$info.dy_name|default=''}">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">别名<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="dy_bname" class="span6 m-wrap" placeholder="请输入别名" value="{$info.dy_bname|default=''}">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">标题<span class="required">*</span></label>
+										<div class="controls">
+											<input type="text" name="dy_title" class="span6 m-wrap" placeholder="请输入标题" value="{$info.dy_title|default=''}">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">描述<span class="required"></span></label>
+										<div class="controls">
+											<textarea name="dy_description" class="span6 m-wrap" placeholder="请输入描述">{$info.dy_description|default=''}</textarea>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label">关键词<span class="required"></span></label>
+										<div class="controls">
+											<textarea name="dy_keyword" class="span6 m-wrap" placeholder="请输入关键词">{$info.dy_keyword|default=''}</textarea>
+										</div>
+									</div>
+									
+									
+									<!-- 单图片上传只需字段代码 -->
+
+									{if !empty($file_upload_index)}
+										{include file='common/update/file'}
+									{/if}
+									<!-- 图片上传 -->
+
+									<!-- 多图片上传只需字段代码 -->
+									{if !empty($files_upload_index)}
+										{include file='common/update/files'}
+									{/if}
+									<!-- 图片上传 -->
+									
+									<div class="form-actions">
+
+										<button type="submit" class="btn green">保存</button>
+
+										<button type="reset" class="btn">取消</button>
+
+									</div>
+									
+								</form>
+
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{include file='common/footer'}
+<!-- 文件上传js html脚本   无文件上传请删除-->
+{if !empty($files_upload_index)}
+	{include file='common/public_js/js_tmpl'}
+	{include file='common/public_js/fileupload'} 
+{/if}
+<script>
+	var editor;
+	jQuery(document).ready(function() {       
+	   App.init();
+//需要修改的部分 
+		rules = {
+				dy_bname: {
+                    required: true,
+                },
+                dy_name: {
+                    required: true,
+                },
+                dy_title: {
+                    required: true,
+                },
+            };
+        messages = { // custom messages for radio buttons and checkboxes
+        		dy_bname: {
+                    required: '不能为空',
+                },
+                dy_name: {
+                    required: '不能为空',
+                },
+                dy_title: {
+                    required: '不能为空',
+                },
+            };//需要修改的部分 
+		{include file='common/add/footer_js'} 
+	})
+</script>

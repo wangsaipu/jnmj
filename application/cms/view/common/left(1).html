@@ -1,0 +1,445 @@
+<div class="page-sidebar nav-collapse collapse">
+			<ul class="page-sidebar-menu" id='nav_start'>
+				<li>
+					<div class="sidebar-toggler hidden-phone"></div>
+				</li>
+				<li class="Index__index">
+					<a href="{:url('index/index')}">
+					<i class="icon-home"></i>
+					<span class="title">Dashboard</span>
+					<span class="selected"></span>
+					</a>
+				</li>
+                {if in_array(1,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-tasks"></i>
+                        <span class="title">资源管理</span>
+                        <span class="selected"></span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="Item__index">
+                            <a href="{:url('item/index')}">项目管理</a>
+                        </li>
+                        <li class="Member__index">
+                            <a href="{:url('member/index')}">竞价数据</a>
+                        </li>
+                        <li class="Phone__index">
+                            <a href="{:url('phone/index')}">手机抓取</a>
+                        </li>
+                        <li class="Qq__index">
+                            <a href="{:url('qq/index')}">QQ抓取</a>
+                        </li>
+                        <li class="Weixin__index">
+                            <a href="{:url('weixin/index')}">微信数据</a>
+                        </li>
+                        <li class="Swt__index">
+                            <a href="{:url('swt/index')}">商务通</a>
+                        </li>
+	          <li class="Consumer__index">
+		<a href="{:url('consumer/index')}">客户数据</a>
+	          </li>
+                    </ul>
+                </li>
+                {/if}
+                {if in_array(19,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-move"></i>
+                        <span class="title">客户追踪</span>
+                        <span class="selected"></span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="Gen__member">
+                            <a href="{:url('gen/member')}">竞价数据</a>
+                        </li>
+                        <li class="Gen__phone">
+                            <a href="{:url('gen/phone')}">手机抓取</a>
+                        </li>
+                        <li class="Gen__qq">
+                            <a href="{:url('gen/qq')}">QQ抓取</a>
+                        </li>
+                        <li class="Gen__weixin">
+                            <a href="{:url('gen/weixin')}">微信数据</a>
+                        </li>
+                        <li class="Gen__swt">
+                            <a href="{:url('gen/swt')}">商务通</a>
+                        </li>
+                        <li class="Gen__consumer">
+                            <a href="{:url('gen/consumer')}">客户数据</a>
+                        </li>
+                    </ul>
+                </li>
+                {/if}
+                {if in_array(14,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+                <li class="">
+                    <a href="javascript:;">
+                        <i class="icon-phone-sign"></i>
+                        <span class="title">客服系统</span>
+                        <span class="selected"></span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="Kefuphone__index">
+                            <a href="{:url('kefumember/index')}">整合数据</a>
+                        </li>
+                        <li class="Kefuconsumer__index">
+                            <a href="{:url('kefuconsumer/index')}">客户数据</a>
+                        </li>
+                    </ul>
+                </li>
+                {/if}
+				{if in_array(2,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-group"></i>
+					<span class="title">老师管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Teacher__index">
+							<a href="{:url('teacher/index')}">老师信息管理</a>
+						</li>
+						<li class="TeacherType__index">
+							<a href="{:url('teacher_type/index')}">喊单类型管理</a>
+						</li>
+						<!-- <li class="TeacherExhibition__index">
+							<a href="{:url('teacher_exhibition/index')}">喊单列表管理</a>
+						</li> -->
+						<li class="TeacherHandan__index">
+							<a href="{:url('teacher_handan/index')}">喊单发布管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(3,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-bar-chart"></i>
+					<span class="title">行情管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Market__index">
+							<a href="{:url('market/index')}">行情接口管理</a>
+						</li>
+						<li class="MarketType__index">
+							<a href="{:url('market_type/index')}">行情分类管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(4,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-comment"></i>
+					<span class="title">资讯管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Classify__index">
+							<a href="{:url('classify/index')}">栏目管理</a>
+						</li>
+						<!-- <li class="Column__index">
+							<a href="{:url('column/index')}">栏目信息</a>
+						</li> -->
+						<li class="Article__index">
+							<a href="{:url('article/index')}">文章管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(5,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-desktop"></i>
+					<span class="title">博客管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="BokGenre__index">
+							<a href="{:url('bok_genre/index')}">栏目管理</a>
+						</li>
+						<!-- <li class="Column__index">
+							<a href="{:url('column/index')}">栏目信息</a>
+						</li> -->
+						<li class="BokArticle__index">
+							<a href="{:url('bok_article/index')}">文章管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(6,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-play-circle"></i>
+					<span class="title">直播管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="ZbGenre__index">
+							<a href="{:url('zb_genre/index')}">栏目管理</a>
+						</li>
+						<!-- <li class="Column__index">
+							<a href="{:url('column/index')}">栏目信息</a>
+						</li> -->
+						<li class="ZbOnline__index">
+							<a href="{:url('zb_online/index')}">直播信息管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(7,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-wrench"></i>
+					<span class="title">工具管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Jin__index">
+							<a href="{:url('jin/index')}">黄金</a>
+						</li>
+                        <li class="Silver__index">
+                          	<a href="{:url('silver/index')}">白银</a>
+                         </li>
+                        <li class="Oil__index">
+                            <a href="{:url('oil/index')}">原油</a>
+                        </li>
+                        <li class="Price__index">
+                            <a href="{:url('price/index')}">外汇牌价</a>
+                        </li>
+                        <li class="Exchange__index">
+                            <a href="{:url('exchange/index')}">汇率换算</a>
+                        </li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(8,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-edit"></i>
+					<span class="title">问答管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+                    <ul class="sub-menu">
+                        <li class="Question__index">
+                            <a href="{:url('question/index')}">问题管理</a>
+                        </li>
+                        <li class="Reply__index">
+                            <a href="{:url('reply/index')}">回答管理</a>
+                        </li>
+                        <li class="Wdcategory">
+                            <a href="{:url('wdcategory/index')}">分类管理</a>
+                        </li>
+                    </ul>
+				</li>
+				{/if}
+				{if in_array(9,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-globe"></i>
+					<span class="title">百科管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+                    <ul class="sub-menu">
+                        <li class="Category__index">
+                            <a href="{:url('category/index')}">分类管理</a>
+                        </li>
+                        <li class="BaiKe__index">
+                            <a href="{:url('bai_ke/index')}">文章管理</a>
+                        </li>
+                        <li class="Special__index">
+		<a href="{:url('special/index')}">专题管理</a>
+	         </li>
+                    </ul>
+				</li>
+				{/if}
+				{if in_array(10,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-book"></i>
+					<span class="title">学院管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+                    <ul class="sub-menu">
+                         <li class="Xy_category__index">
+                            <a href="{:url('xycategory/index')}">分类管理</a>
+                        </li>
+                        <li class="College__index">
+                            <a href="{:url('college/index')}">学院文章管理</a>
+                        </li>
+                    </ul>
+				</li>
+				{/if}
+				{if in_array(11,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-play"></i>
+					<span class="title">视频管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+                    <ul class="sub-menu">
+                                                                                     <li class="Vcategory__index">
+							<a href="{:url('vcategory/index')}">分类管理</a>
+						</li>
+						<li class="Video__index">
+							<a href="{:url('video/index')}">视频文章管理</a>
+						</li>
+                    </ul>
+				</li>
+				{/if}
+				{if in_array(12,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-user"></i>
+					<span class="title">用户管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="User__index">
+							<a href="{:url('user/index')}">用户信息管理</a>
+						</li>
+						<li class="UserExamine__index">
+							<a href="{:url('user_examine/index')}">用户审核管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(15,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+                <li class="">
+					<a href="javascript:;">
+						<i class="icon-sitemap"></i>
+						<span class="title">操盘室</span>
+						<span class="selected"></span>
+						<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Handan__index">
+							<a href="{:url('handan/index')}">操盘喊单</a>
+						</li>
+						<li class="__index">
+							<a href="{:url('u/index')}">喊单统计</a>
+						</li>
+						<li class="User__index">
+							<a href="{:url('u/index')}">带单系统</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(16,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+						<i class="icon-signout"></i>
+						<span class="title">统计系统</span>
+						<span class="selected"></span>
+						<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Statistics__index">
+							<a href="{:url('statistics/index')}">数据统计</a>
+						</li>
+						<li class="Kstatistics__index">
+							<a href="{:url('kstatistics/index')}">客服统计</a>
+						</li>
+						<li class="Flow__index">
+							<a href="{:url('flow/index')}">流量统计</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(17,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+						<i class="icon-star-half"></i>
+						<span class="title">支付体系</span>
+						<span class="selected"></span>
+						<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+					</ul>
+				</li>
+				{/if}
+				{if in_array(18,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+						<i class="icon-link"></i>
+						<span class="title">广告组</span>
+						<span class="selected"></span>
+						<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="GgAdvert__index">
+							<a href="{:url('gg_advert/index')}">广告管理</a>
+						</li>
+						<li class="GgRelation__index">
+							<a href="{:url('gg_relation/index')}">广告分配管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(20,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+						<i class="icon-leaf"></i>
+						<span class="title">公司简介</span>
+						<span class="selected"></span>
+						<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="Company__index">
+							<a href="{:url('company/index')}">自定义编辑</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+				{if in_array(13,$b_role) || $Think.session.cmsuser['is_super'] == 1}
+				<li class="">
+					<a href="javascript:;">
+					<i class="icon-cogs"></i>
+					<span class="title">系统管理</span>
+					<span class="selected"></span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li class="DyHome__index">
+							<a href="{:url('dy_home/index')}">首页设置管理</a>
+						</li>
+						<li class="Branch__index">
+							<a href="{:url('branch/index')}">部门分配管理</a>
+						</li>
+						<li class="CmsUser__index">
+							<a href="{:url('cms_user/index')}">管理员管理</a>
+						</li>
+						<li class="Worker__index">
+							<a href="{:url('worker/index')}">职员信息管理</a>
+						</li>
+					</ul>
+				</li>
+				{/if}
+			</ul>
+</div>
+<script>
+	if($('li').hasClass('{$controller__action}')){
+		$('.{$controller__action}').addClass('active').parents("li").addClass('active').each(function(){
+			$(this).find('a').find('.arrow').first().addClass('open');
+		});
+	}else{
+		$('.{$controller__index}').addClass('active').parents("li").addClass('active').each(function(){
+			$(this).find('a').find('.arrow').first().addClass('open');
+		});
+	}
+</script>

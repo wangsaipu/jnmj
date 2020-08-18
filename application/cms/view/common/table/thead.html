@@ -1,0 +1,18 @@
+								<thead class='cf'>
+									<tr>
+										{if $init_index==2}
+										<th style="width:8px;" class="numeric"><nobr>选择</nobr></th>
+										{/if}
+										{foreach $my_rule.showlist as $k=>$v}
+										{if isset($hidden_index)}
+										<th data-column="{$k+$init_index}" class="numeric {if in_array($k,$hidden_index)} inithidden {/if}"><nobr>{$v}&nbsp;&nbsp;&nbsp;</nobr></th>
+										{else/}
+										<th data-column="{$k+$init_index}" class="numeric"><nobr>{$v}&nbsp;&nbsp;&nbsp;</nobr></th>
+										{/if}
+										{/foreach}
+
+										{if !isset($no_edit)}
+											<th data-column="{$edit_index}" class="numeric">操作</th>
+										{/if}
+									</tr>
+								</thead>

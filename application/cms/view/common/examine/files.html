@@ -1,0 +1,28 @@
+									{foreach $files_upload_index as $column=>$name}
+									<div class="control-group" id='column_{$column}'>
+										<label class="control-label">{$name}<span class="required">*</span></label>
+										<div class="controls">
+										
+											<table role="presentation" class="table table-striped ">
+												<tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery">
+												{if !empty($info[$column])}
+												{foreach :json_decode($info[$column]) as $k=>$v}
+												<tr class="template-download fade in ">
+										            <td class="preview" style='vertical-align: inherit;'>
+										            	<input type="hidden" name='{$column}[]' value="{$v}">
+										                <a class="fancybox-button" data-rel="fancybox-button" target='_blank' href="{$Think.config.cms_upload}/{$v}" title="{$v}">
+										                <img src="{$Think.config.cms_upload}/{$v}" width='100' >
+										                </a>
+										            </td>
+										            <td class="name" style='vertical-align: inherit;'>
+										                <a href="{$Think.config.cms_upload}/{$v}" title="{$v}" data-gallery="gallery" download="{$v}">{$v}</a>
+										            </td>
+										            <td colspan="3" style='vertical-align: inherit;'></td>
+									        	</tr>
+												{/foreach}
+												{/if}
+												</tbody>
+											</table>
+										</div>
+									</div>
+									{/foreach}

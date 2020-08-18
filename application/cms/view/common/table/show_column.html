@@ -1,0 +1,23 @@
+						<div class="portlet-title">
+							<div class="caption"><i class="icon-reorder"></i>{$table_title|default='列表信息'}</div>
+							<div class="actions">
+									<div class="btn-group">
+										<a class="btn" href="#" data-toggle="dropdown">
+										显示字段
+										<i class="icon-angle-down"></i>
+										</a>
+										<div id="sample_1_column_toggler" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+											{foreach $my_rule.showlist as $k=>$v}
+												{if isset($hidden_index)}
+												<label><input type="checkbox" {if !in_array($k,$hidden_index)} checked {/if} data-column="{$k+$init_index}">{$v}</label>
+												{else/}
+												<label><input type="checkbox"  checked data-column="{$k+$init_index}">{$v}</label>
+												{/if}
+											{/foreach}
+											{if !isset($no_edit)}
+											<label><input type="checkbox" checked data-column="{$edit_index}">操作</label>
+											{/if}
+										</div>
+									</div>
+							</div>
+						</div> 
